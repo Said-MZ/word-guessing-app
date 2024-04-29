@@ -23,6 +23,7 @@ public class play extends AppCompatActivity {
     int primary;
     int lightGreen;
     int red;
+    int white;
     //--------------------------------
 
     // 2 arrays with words with their hints
@@ -100,6 +101,7 @@ public class play extends AppCompatActivity {
         primary =  getColor(R.color.primary);
         lightGreen = getColor(R.color.lightGreen);
         red = getColor(R.color.red);
+        white = getColor(R.color.white);
         //----------------------------------
 
         btn.setEnabled(false);
@@ -224,5 +226,44 @@ public class play extends AppCompatActivity {
         }
         //empty input after guessing for better UX
         letterInput.setText("");
+    }
+
+    public void nextEvent(View view) {
+        if(btn2.getText().toString().equalsIgnoreCase("restart")){
+            rightGuessesCounter = 0;
+            attemptsCounter = 10;
+
+            hintContainer.setText("");
+            attemptsContainer.setText(attemptsCounter + " Attempts Left");
+            firstLetterContainer.setText("");
+            secondLetterContainer.setText("");
+            thirdLetterContainer.setText("");
+
+            btn2.setVisibility(View.INVISIBLE);
+            btn.setVisibility(View.VISIBLE);
+
+            letterInput.setEnabled(true);
+            letterInput.setHintTextColor(lightGreen);
+
+            firstLetterContainer.setBackgroundColor(lightGreen);
+            secondLetterContainer.setBackgroundColor(lightGreen);
+            thirdLetterContainer.setBackgroundColor(lightGreen);
+
+            attemptsContainer.setTextColor(white);
+
+            randomNumber = (int) (Math.random() * words.length );
+
+            word = words[randomNumber];
+            hint = hints[randomNumber];
+
+             letter1 = word.charAt(0) + "";
+             isLetter1Solved = false;
+             letter2 = word.charAt(1) + "";
+             isLetter2Solved = false;
+             letter3 = word.charAt(2) + "";
+
+        } else{
+
+        }
     }
 }

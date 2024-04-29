@@ -136,7 +136,7 @@ public class play extends AppCompatActivity {
         // check if the user guess is one of the three letters and store the value in a boolean
         boolean isRightGuess = word.toLowerCase().contains(letterInput.getText().toString().toLowerCase());
 
-        if(isRightGuess){
+        if(isRightGuess && !letterInput.getText().toString().equals("~")){
             // get right char from input
             String rightChar = letterInput.getText().toString();
             // get right char index
@@ -146,23 +146,18 @@ public class play extends AppCompatActivity {
                 firstLetterContainer.setText(rightChar.toUpperCase());
                 firstLetterContainer.setBackgroundColor(primary);
                 rightGuessesCounter++;
-                word = "-" + word.substring(1,3);  // box => -ox
-
-                // temp
-                hintContainer.setText(word);
+                word = "~" + word.substring(1,3);  // box => ~ox
             } else if (indexOfRightChar == 1) {
                 secondLetterContainer.setText(rightChar.toUpperCase());
                 secondLetterContainer.setBackgroundColor(primary);
                 rightGuessesCounter++;
-                word = word.substring(0,1) + "-" + word.substring(2);  // box => b-x
-                hintContainer.setText(word);
+                word = word.substring(0,1) + "~" + word.substring(2);  // box => b~x
 
             } else{
                 thirdLetterContainer.setText(rightChar.toUpperCase());
                 thirdLetterContainer.setBackgroundColor(primary);
                 rightGuessesCounter++;
-                word = word.substring(0,2) + "-";  // box => bo-
-                hintContainer.setText(word);
+                word = word.substring(0,2) + "~";  // box => bo~
             }
 
             if(rightGuessesCounter > 2 ){

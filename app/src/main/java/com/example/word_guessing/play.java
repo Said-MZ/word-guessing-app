@@ -134,48 +134,35 @@ public class play extends AppCompatActivity {
     @SuppressLint("ResourceAsColor")
     public void guess(View view) {
         // check if the user guess is one of the three letters and store the value in a boolean
-        boolean isRightGuess = letterInput.getText().toString().equalsIgnoreCase(letter1) ||
-                               letterInput.getText().toString().equalsIgnoreCase(letter2) ||
-                               letterInput.getText().toString().equalsIgnoreCase(letter3);
+        boolean isRightGuess = word.toLowerCase().contains(letterInput.getText().toString().toLowerCase());
 
         if(isRightGuess){
-            // check which letter is the right letter
-            String rightChar = letterInput.getText().toString().equalsIgnoreCase(letter1) ?  letter1:
-                               letterInput.getText().toString().equalsIgnoreCase(letter2) ? letter2:
-                               letter3;
+            // get right char from input
+            String rightChar = letterInput.getText().toString();
+            // get right char index
+            int indexOfRightChar = word.toLowerCase().indexOf(rightChar.toLowerCase());
 
-            // get the index of the letter
-            int indexOfRightChar;
-            // if letter is solved we don't get it's index to avoid redundancy errors
-            if(!isLetter1Solved){
-                indexOfRightChar = word.indexOf(rightChar);
-            } else if (!isLetter2Solved) {
-                indexOfRightChar = word.indexOf(rightChar,1);
-                isLetter2Solved = true;
-            } else{
-                indexOfRightChar = word.lastIndexOf(rightChar);
-            }
-
-            // if the letter is the first or second we change the value of the boolean so
-            // we don't face redundancy errors
-            if(word.indexOf(rightChar) == 0){
-                isLetter1Solved = true;
-            } else if (word.indexOf(rightChar) == 1) {
-                isLetter2Solved = true;
-            }
-
-            if (indexOfRightChar == 0) {
+            if(indexOfRightChar == 0){
                 firstLetterContainer.setText(rightChar.toUpperCase());
                 firstLetterContainer.setBackgroundColor(primary);
                 rightGuessesCounter++;
+                word = "-" + word.substring(1,3);  // box => -ox
+
+                // temp
+                hintContainer.setText(word);
             } else if (indexOfRightChar == 1) {
                 secondLetterContainer.setText(rightChar.toUpperCase());
                 secondLetterContainer.setBackgroundColor(primary);
                 rightGuessesCounter++;
-            } else {
+                word = word.substring(0,1) + "-" + word.substring(2);  // box => b-x
+                hintContainer.setText(word);
+
+            } else{
                 thirdLetterContainer.setText(rightChar.toUpperCase());
                 thirdLetterContainer.setBackgroundColor(primary);
                 rightGuessesCounter++;
+                word = word.substring(0,2) + "-";  // box => bo-
+                hintContainer.setText(word);
             }
 
             if(rightGuessesCounter > 2 ){
@@ -192,6 +179,7 @@ public class play extends AppCompatActivity {
                 hintContainer.setText("");
             }
         } else{
+
             // if user guessed wrong we subtract 1 from the counter
             attemptsCounter--;
             // if the user attempts remaining reached 5 we show a hint
@@ -256,11 +244,11 @@ public class play extends AppCompatActivity {
             word = words[randomNumber];
             hint = hints[randomNumber];
 
-             letter1 = word.charAt(0) + "";
-             isLetter1Solved = false;
-             letter2 = word.charAt(1) + "";
-             isLetter2Solved = false;
-             letter3 = word.charAt(2) + "";
+            letter1 = word.charAt(0) + "";
+            isLetter1Solved = false;
+            letter2 = word.charAt(1) + "";
+            isLetter2Solved = false;
+            letter3 = word.charAt(2) + "";
 
         } else{
 

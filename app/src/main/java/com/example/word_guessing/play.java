@@ -92,7 +92,7 @@ public class play extends AppCompatActivity {
         // watcher to disable/enable the button
         letterInput.addTextChangedListener(watcher);
 
-        btn = findViewById(R.id.button);
+        btn = findViewById(R.id.htpButton);
         btn2 = findViewById(R.id.btn2);
 
         attemptsContainer = findViewById(R.id.attemptContainer);

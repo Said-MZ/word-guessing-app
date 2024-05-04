@@ -25,8 +25,13 @@ public class splash extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
+                // user can go back to splash screen
                 Intent goToMainActivity = new Intent(splash.this, MainActivity.class);
                 startActivity(goToMainActivity);
+                finish();
+                // user can't go back using the code below but if used the app doesn't work
+//                setContentView(R.layout.activity_main);
+                // ----------------------------------- temp
             }
         };
         new Handler().postDelayed(runnable,3000);

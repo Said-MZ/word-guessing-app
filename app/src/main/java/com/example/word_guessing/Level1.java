@@ -1,6 +1,7 @@
 package com.example.word_guessing;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,8 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 
-
-public class play extends AppCompatActivity {
+public class Level1 extends AppCompatActivity {
 
     // colors variables
     int primary;
@@ -74,7 +74,7 @@ public class play extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_play);
+        setContentView(R.layout.level1);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -183,13 +183,13 @@ public class play extends AppCompatActivity {
             }
             if(attemptsCounter < 1){
                attemptsContainer.setText("You Lost!!!");
-               firstLetterContainer.setText(letter1);
+               firstLetterContainer.setText(letter1.toUpperCase());
                firstLetterContainer.setBackgroundColor(red);
 
-               secondLetterContainer.setText(letter2);
+               secondLetterContainer.setText(letter2.toUpperCase());
                secondLetterContainer.setBackgroundColor(red);
 
-               thirdLetterContainer.setText(letter3);
+               thirdLetterContainer.setText(letter3.toUpperCase());
                thirdLetterContainer.setBackgroundColor(red);
 
                btn2.setVisibility(View.VISIBLE);
@@ -246,7 +246,8 @@ public class play extends AppCompatActivity {
             letter3 = word.charAt(2) + "";
 
         } else{
-
+            Intent nextLevel = new Intent(Level1.this, Level2.class);
+            startActivity(nextLevel);
         }
     }
 }

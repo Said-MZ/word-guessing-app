@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#08100d"
     android:visibility="visible"
-    tools:context=".play">
+    tools:context=".Level2">
 
     <TextView
         android:id="@+id/textView"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_bold"
         android:letterSpacing=".25"
-        android:text="Level 1"
+        android:text="Level 2"
         android:textColor="#eaf3ef"
         android:textSize="64sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,6 +87,19 @@
             android:layout_margin="6dp"
             android:layout_weight="1"
             android:background="#2f7b59"
+            android:fontFamily="@font/poppins_bold"
+            android:textAlignment="center"
+            android:textColor="#fefefe"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fourthLetterContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight="1"
+            android:background="@color/darkGreen"
             android:fontFamily="@font/poppins_bold"
             android:textAlignment="center"
             android:textColor="#fefefe"

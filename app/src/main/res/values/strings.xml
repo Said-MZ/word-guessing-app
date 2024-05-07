@@ -1,14 +1,19 @@
 <resources>
     <string name="app_name">WORDS</string>
 
-    <string name="how_to_play">1. Guess a letter from the hidden word.
-    2. If the letter is correct, it will reveal its place in the word.&#xA;&#xA;
-
-    3. If incorrect, one attempt is counted against you.&#xA;&#xA;
-
-    4. You have 10 attempts to guess the word.&#xA;&#xA;
-
-    5. After 5 attempts, a hint will appear to help you.&#xA;&#xA;
+    <string name="how_to_play_s1">  1. Guess a letter from the hidden word.
+    </string>
+    <string name="how_to_play_s2">
+    2. If the letter is correct, it will reveal its place in the word.
+    </string>
+    <string name="how_to_play_s3">
+    3. If incorrect, one attempt is counted against you.
+    </string>
+    <string name="how_to_play_s4">
+    4. You have 10 attempts to guess the word.
+    </string>
+    <string name="how_to_play_s5">
+    5. After 5 attempts, a hint will appear to help you.
     </string>
 
 </resources>
